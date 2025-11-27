@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДИМА: СТАТИСТИКА ПОЗОРА</title>
+    <meta name="description" content="Официальный отчет о геймерских способностях Димы">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Press+Start+2P&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Russo One', sans-serif;
+            background-color: #050505;
+            background-image: radial-gradient(#1a0b0b 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #ff3333;
+            overflow-x: hidden;
+        }
+        .gamer-title { font-family: 'Black Ops One', cursive; text-shadow: 4px 4px 0px #000, -2px -2px 0 #ff0000; }
+        .pixel-font { font-family: 'Press Start 2P', cursive; }
+        .glitch-text { position: relative; }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .glitch-text::before { left: 2px; text-shadow: -1px 0 red; clip: rect(24px, 550px, 90px, 0); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+        .glitch-text::after { left: -2px; text-shadow: -1px 0 blue; clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse; }
+        @keyframes glitch-anim {
+            0% { clip: rect(14px, 9999px, 127px, 0); } 20% { clip: rect(60px, 9999px, 8px, 0); }
+            40% { clip: rect(98px, 9999px, 86px, 0); } 60% { clip: rect(19px, 9999px, 12px, 0); }
+            80% { clip: rect(110px, 9999px, 134px, 0); } 100% { clip: rect(55px, 9999px, 50px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); } 20% { clip: rect(10px, 9999px, 115px, 0); }
+            40% { clip: rect(89px, 9999px, 44px, 0); } 60% { clip: rect(2px, 9999px, 130px, 0); }
+            80% { clip: rect(30px, 9999px, 98px, 0); } 100% { clip: rect(10px, 9999px, 142px, 0); }
+        }
+        .crosshair-cursor { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ff0000" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>') 12 12, crosshair; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .animate-marquee { animation: marquee 15s linear infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        @keyframes rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        @keyframes explode { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        .shake-anim { animation: shake 0.5s ease-in-out infinite; }
+        .rainbow-anim { animation: rainbow 2s linear infinite; }
+</style>
+</head>
+<body class="crosshair-cursor min-h-screen flex flex-col">
+
+    <!-- Floating Emojis Background -->
+    <div id="emojiRain" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- Marquee Warning -->
+    <div class="bg-red-600 text-black font-bold overflow-hidden py-1 whitespace-nowrap border-b-4 border-black relative z-10">
+        <div class="inline-block animate-marquee">
+            🚨 ВНИМАНИЕ! В ЛОББИ ОБНАРУЖЕН РУИНЕР • 💀 ДИМА ЗАШЕЛ В СЕТЬ — СПАСАЙТЕ ЭЛО • 🔫 НЕ ДАВАЙТЕ ЕМУ AWP • 🤡 ЭТО НЕ СМУРФ, ЭТО ПРОСТО ПОЗОР • 🎮 СЧЕТЧИК СМЕРТЕЙ ПЕРЕПОЛНЕН •
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="text-center pt-16 pb-8 px-4 relative z-10">
+        <div class="inline-block mb-4 px-6 py-2 bg-yellow-400 text-black text-xl font-bold transform -rotate-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:rotate-2 transition-transform cursor-pointer" onclick="confetti()">
+            🎖️ ОФИЦИАЛЬНЫЙ ОТЧЕТ VALVE 🎖️
+        </div>
+        <h1 class="gamer-title text-6xl md:text-8xl text-white mb-4 glitch-text" data-text="ДИМА = БОТ">
+            ДИМА = БОТ
+        </h1>
+        <div class="text-6xl float-anim my-4">🤡</div>
+        <p class="text-red-400 text-xl md:text-2xl max-w-2xl mx-auto mt-6 border-l-4 border-red-600 pl-4 bg-black/50 py-2">
+            "Единственный человек, который может промазать ножом в спину AFK игроку."
+        </p>
+        
+        <!-- Sound Toggle -->
+        <button id="soundToggle" class="mt-4 px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors">
+            🔊 Включить звук позора
+        </button>
+    </header>
+
+    <!-- Achievement Popup -->
+    <div id="achievementPopup" class="fixed top-20 right-4 bg-gradient-to-r from-yellow-600 to-yellow-400 text-black p-4 rounded-lg shadow-2xl transform translate-x-full transition-transform duration-500 z-50 border-4 border-black">
+        <div class="flex items-center gap-3">
+            <span class="text-4xl">🏆</span>
+            <div>
+                <p class="font-bold text-sm">ДОСТИЖЕНИЕ РАЗБЛОКИРОВАНО!</p>
+                <p id="achievementText" class="text-lg">Посетил сайт позора</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+
+        <!-- Profile Card -->
+        <div class="bg-gray-900 border-4 border-red-600 p-6 relative shadow-[8px_8px_0px_0px_rgba(200,0,0,0.5)] transform hover:scale-[1.02] transition-transform group">
+            <div class="absolute -top-5 -right-5 bg-red-600 text-white px-4 py-2 font-bold rotate-12 border-2 border-white shake-anim">
+                VAC BAN SOON
+            </div>
+            <div class="w-full aspect-square bg-black flex items-center justify-center border-2 border-gray-700 mb-4 overflow-hidden relative">
+                <img src="https://ui-avatars.com/api/?name=Dima+Noob&background=ff0000&color=fff&size=300" alt="Avatar" class="w-full h-full object-cover opacity-50 group-hover:opacity-20 transition-opacity">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-8xl group-hover:animate-spin transition-all">🤡</span>
+                </div>
+                <div class="absolute bottom-0 w-full bg-red-600/80 text-center py-1 text-xs text-white">
+                    ⚠️ Уровень опасности: НУЛЕВОЙ ⚠️
+                </div>
+            </div>
+            <h2 class="text-2xl text-white mb-2 uppercase border-b border-gray-700 pb-2">👤 Профиль Игрока</h2>
+            <ul class="space-y-3 text-gray-300 text-sm md:text-base">
+                <li class="flex justify-between"><span>🎖️ Звание:</span><span class="text-yellow-400 font-bold">Silver -1</span></li>
+                <li class="flex justify-between"><span>🔫 Любимое оружие:</span><span class="text-red-400 font-bold">Zeus x27 (Промахи)</span></li>
+                <li class="flex justify-between"><span>🎭 Роль в тиме:</span><span class="text-red-400 font-bold">Мясо / Приманка</span></li>
+                <li class="flex justify-between"><span>💀 K/D Ratio:</span><span class="text-red-400 font-bold">0.001</span></li>
+                <li class="flex justify-between"><span>🧠 IQ в игре:</span><span class="text-red-400 font-bold">Отрицательный</span></li>
+            </ul>
+        </div>
+
+        <!-- Live Stats -->
+        <div class="bg-black border border-green-500/30 p-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10"></div>
+            <h2 class="text-xl text-green-400 mb-6 flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse mr-2"></span>
+                📊 LIVE СТАТИСТИКА
+            </h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between text-sm text-gray-400 mb-1"><span>🎯 Точность стрельбы</span><span id="accuracy">1%</span></div>
+                    <div class="w-full bg-gray-800 h-4 rounded-full overflow-hidden">
+                        <div id="accuracyBar" class="bg-red-600 h-full w-[1%] transition-all duration-300"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between text-sm text-gray-400 mb-1"><span>💥 Ослеплено союзников</span><span>9999+</span></div>
+                    <div class="w-full bg-gray-800 h-4 rounded-full overflow-hidden">
+                        <div class="bg-green-500 h-full w-[100%]"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-sm text-gray-400 mb-1"><span>🔥 Тимкиллы</span><span id="teamkills">247</span></div>
+                    <div class="w-full bg-gray-800 h-4 rounded-full overflow-hidden">
+                        <div class="bg-orange-500 h-full w-[85%]"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-4 border border-red-900 mt-8 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-red-500/10 animate-pulse"></div>
+                    <p class="text-xs text-red-500 uppercase mb-2">💀 Счетчик промахов (Всего)</p>
+                    <div id="missCounter" class="pixel-font text-4xl text-white text-right relative z-10">8,492,102</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat / Quotes -->
+        <div class="bg-gray-900/80 p-4 border-l-4 border-yellow-400 flex flex-col h-full">
+            <h2 class="text-xl text-yellow-400 mb-4 uppercase">💬 Чат команды</h2>
+            <div id="chatBox" class="flex-grow space-y-4 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar text-sm">
+                <div class="bg-black/40 p-2 rounded"><span class="text-blue-400 font-bold">s1mple:</span><span class="text-white"> Кикните Диму пж, невозможно играть</span></div>
+                <div class="bg-black/40 p-2 rounded"><span class="text-green-400 font-bold">Gaben:</span><span class="text-white"> Мы думаем удалить CS2 только чтобы он перестал заходить</span></div>
+                <div class="bg-black/40 p-2 rounded"><span class="text-purple-400 font-bold">Teammate_1:</span><span class="text-white"> Дима, зачем ты купил P90 на эко раунде?</span></div>
+                <div class="bg-black/40 p-2 rounded border border-red-500/30"><span class="text-red-500 font-bold">SYSTEM:</span><span class="text-red-400"> Дима кинул флешку. Вся команда ослеплена на 5 минут.</span></div>
+                <div class="bg-black/40 p-2 rounded"><span class="text-yellow-400 font-bold">Enemy_Bot:</span><span class="text-white"> Easy win ty Dima</span></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mini Games Section -->
+    <section class="container mx-auto px-4 py-8 relative z-10">
+        <h2 class="text-3xl text-white text-center mb-8 uppercase">🎮 Мини-игры: Почувствуй себя Димой</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Click Game -->
+            <div class="bg-gray-900 border-2 border-yellow-500 p-6 rounded-lg">
+                <h3 class="text-xl text-yellow-400 mb-4">🎯 Попади по мишени (как Дима)</h3>
+                <p class="text-gray-400 text-sm mb-4">Нажми на мишень! Спойлер: ты промажешь.</p>
+                <div id="targetArea" class="relative w-full h-48 bg-black border border-gray-700 rounded overflow-hidden cursor-crosshair">
+                    <div id="target" class="absolute w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-2xl transition-all duration-100" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        🎯
+                    </div>
+                    <div id="hitMarker" class="absolute text-4xl pointer-events-none hidden">❌</div>
+                </div>
+                <p class="text-center mt-4 text-white">Попаданий: <span id="hitCount" class="text-green-400">0</span> | Промахов: <span id="missCount" class="text-red-400">0</span></p>
+            </div>
+
+            <!-- Slot Machine -->
+            <div class="bg-gray-900 border-2 border-purple-500 p-6 rounded-lg">
+                <h3 class="text-xl text-purple-400 mb-4">🎰 Рулетка оправданий Димы</h3>
+                <p class="text-gray-400 text-sm mb-4">Крутани и узнай почему Дима опять слил раунд!</p>
+                <div class="flex justify-center gap-2 mb-4">
+                    <div id="slot1" class="w-16 h-16 bg-black border-2 border-purple-500 rounded flex items-center justify-center text-3xl">🎮</div>
+                    <div id="slot2" class="w-16 h-16 bg-black border-2 border-purple-500 rounded flex items-center justify-center text-3xl">💀</div>
+                    <div id="slot3" class="w-16 h-16 bg-black border-2 border-purple-500 rounded flex items-center justify-center text-3xl">🤡</div>
+                </div>
+                <button id="spinBtn" class="w-full py-3 bg-purple-600 text-white font-bold rounded hover:bg-purple-500 transition-colors">
+                    🎰 КРУТИТЬ!
+                </button>
+                <p id="excuseText" class="text-center mt-4 text-yellow-400 text-lg min-h-[3rem]"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Evidence Section -->
+    <section class="container mx-auto px-4 py-8 relative z-10">
+        <div class="border-4 border-red-600 bg-black p-1 relative">
+            <h2 class="text-2xl text-white bg-red-600 px-4 py-1 inline-block absolute -top-5 left-4">📹 ЛУЧШИЕ МОМЕНТЫ (0)</h2>
+            <div class="aspect-video bg-black w-full relative overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%221%22/%3E%3C/svg%3E');"></div>
+                <div class="z-10 text-center animate-pulse">
+                    <p class="text-4xl md:text-6xl text-red-600 font-bold glitch-text" data-text="NO SIGNAL">NO SIGNAL</p>
+                    <p class="text-xl text-white mt-2">ERROR 404: SKILL NOT FOUND</p>
+                    <p class="text-sm text-gray-500 mt-4 font-mono">Replay corrupted due to low IQ gameplay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dima's Achievements -->
+    <section class="container mx-auto px-4 py-8 relative z-10">
+        <h2 class="text-3xl text-white text-center mb-8 uppercase">🏆 Достижения Димы</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gray-900 border border-yellow-500 p-4 text-center rounded-lg hover:scale-105 transition-transform cursor-pointer" onclick="showAchievement('Первая кровь... своя')">
+                <span class="text-4xl">💀</span>
+                <p class="text-yellow-400 text-sm mt-2">Первая кровь... своя</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-500 p-4 text-center rounded-lg hover:scale-105 transition-transform cursor-pointer" onclick="showAchievement('Мастер флешек по своим')">
+                <span class="text-4xl">💥</span>
+                <p class="text-yellow-400 text-sm mt-2">Мастер флешек по своим</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-500 p-4 text-center rounded-lg hover:scale-105 transition-transform cursor-pointer" onclick="showAchievement('AWP? Не слышал')">
+                <span class="text-4xl">🔫</span>
+                <p class="text-yellow-400 text-sm mt-2">AWP? Не слышал</p>
+            </div>
+            <div class="bg-gray-900 border border-yellow-500 p-4 text-center rounded-lg hover:scale-105 transition-transform cursor-pointer" onclick="showAchievement('Эко каждый раунд')">
+                <span class="text-4xl">💸</span>
+                <p class="text-yellow-400 text-sm mt-2">Эко каждый раунд</p>
+            </div>
+            <div class="bg-gray-900 border border-gray-600 p-4 text-center rounded-lg opacity-50">
+                <span class="text-4xl">🔒</span>
+                <p class="text-gray-500 text-sm mt-2">Убить врага (Заблокировано)</p>
+            </div>
+            <div class="bg-gray-900 border border-gray-600 p-4 text-center rounded-lg opacity-50">
+                <span class="text-4xl">🔒</span>
+                <p class="text-gray-500 text-sm mt-2">Выиграть раунд (Заблокировано)</p>
+            </div>
+            <div class="bg-gray-900 border border-gray-600 p-4 text-center rounded-lg opacity-50">
+                <span class="text-4xl">🔒</span>
+                <p class="text-gray-500 text-sm mt-2">K/D > 1 (Невозможно)</p>
+            </div>
+            <div class="bg-gray-900 border border-gray-600 p-4 text-center rounded-lg opacity-50">
+                <span class="text-4xl">🔒</span>
+                <p class="text-gray-500 text-sm mt-2">Получить комплимент (404)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="py-12 bg-red-900/10 text-center relative z-10">
+        <h2 class="text-3xl text-white mb-8 uppercase">🆘 Поможем Диме?</h2>
+        
+        <div class="flex flex-wrap justify-center gap-4 relative h-32 items-center">
+            <button class="px-8 py-4 bg-gray-600 text-gray-300 font-bold cursor-not-allowed border-2 border-gray-500 opacity-50">
+                Научить играть (Ошибка сервера)
+            </button>
+            
+            <button id="skillBtn" class="px-8 py-4 bg-green-500 text-black font-bold border-b-4 border-green-800 hover:bg-green-400 transition-all absolute" style="left: 50%; transform: translateX(-50%);">
+                Скинуть скилл
+            </button>
+
+            <button onclick="reportDima()" class="px-8 py-4 bg-red-600 text-white font-bold border-b-4 border-red-800 hover:bg-red-500 active:translate-y-1 active:border-b-0 transition-all">
+                🚨 РЕПОРТ ЗА ГРИФИНГ
+            </button>
+        </div>
+        
+        <!-- Rage Meter -->
+        <div class="max-w-md mx-auto mt-12">
+            <h3 class="text-xl text-white mb-4">😤 Уровень бомбежки тиммейтов</h3>
+            <div class="w-full bg-gray-800 h-8 rounded-full overflow-hidden border-2 border-red-500">
+                <div id="rageMeter" class="h-full bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 transition-all duration-500" style="width: 0%"></div>
+            </div>
+            <p id="rageText" class="text-yellow-400 mt-2">Нажимай кнопки чтобы повысить!</p>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="container mx-auto px-4 py-8 text-center relative z-10">
+        <h2 class="text-2xl text-white mb-4">📤 Поделись позором!</h2>
+        <p class="text-gray-400 mb-6">Отправь этот сайт Диме или его друзьям</p>
+        <div class="flex justify-center gap-4 flex-wrap">
+            <button onclick="copyLink()" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors">
+                📋 Скопировать ссылку
+            </button>
+            <button onclick="shareTwitter()" class="px-6 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-400 transition-colors">
+                🐦 Twitter
+            </button>
+            <button onclick="shareTelegram()" class="px-6 py-3 bg-blue-400 text-white rounded-lg hover:bg-blue-300 transition-colors">
+                ✈️ Telegram
+            </button>
+        </div>
+        <p id="copyNotification" class="text-green-400 mt-4 opacity-0 transition-opacity">✅ Ссылка скопирована!</p>
+    </section>
+
+    <footer class="bg-black text-center py-6 border-t border-gray-800 text-gray-600 text-xs relative z-10">
+        <p>Сайт создан для унижения. Все совпадения случайны (но Дима реально рак). 🤡</p>
+        <p class="mt-2">ANTI-DIMA CLUB &copy; 2024 | Посетителей: <span id="visitorCount" class="text-red-400">0</span></p>
+        <p class="mt-2 text-gray-700">Made with 💔 and много боли от игры с Димой</p>
+    </footer>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1a1a1a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
+        
+        .confetti { position: fixed; pointer-events: none; z-index: 1000; }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .emoji-float {
+            position: absolute;
+            animation: emojiFloat 10s linear infinite;
+            opacity: 0.3;
+            font-size: 2rem;
+            pointer-events: none;
+        }
+        
+        @keyframes emojiFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+
+    <script>
+        // Visitor Counter (fake but fun)
+        let visitors = Math.floor(Math.random() * 50000) + 100000;
+        document.getElementById('visitorCount').textContent = visitors.toLocaleString();
+        setInterval(() => {
+            visitors += Math.floor(Math.random() * 5);
+            document.getElementById('visitorCount').textContent = visitors.toLocaleString();
+        }, 3000);
+
+        // Miss Counter Logic
+        const counterEl = document.getElementById('missCounter');
+        let count = 8492102;
+        setInterval(() => {
+            const increment = Math.floor(Math.random() * 10);
+            count += increment;
+            counterEl.innerText = count.toLocaleString();
+            if(Math.random() > 0.7) {
+                counterEl.style.color = 'red';
+                setTimeout(() => counterEl.style.color = 'white', 100);
+            }
+        }, 500);
+
+        // Accuracy fluctuation
+        setInterval(() => {
+            const acc = Math.random() * 3;
+            document.getElementById('accuracy').textContent = acc.toFixed(1) + '%';
+            document.getElementById('accuracyBar').style.width = acc + '%';
+        }, 2000);
+
+        // Teamkills counter
+        let teamkills = 247;
+        setInterval(() => {
+            if(Math.random() > 0.8) {
+                teamkills++;
+                document.getElementById('teamkills').textContent = teamkills;
+                addChatMessage('SYSTEM', 'Дима убил союзника. Опять.', 'red');
+            }
+        }, 5000);
+
+        // Runaway Button Logic
+        const btn = document.getElementById('skillBtn');
+        const container = btn.parentElement;
+        
+        const moveButton = () => {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = containerRect.height - btnRect.height;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            btn.style.transform = 'none'; 
+            btn.style.left = `${newX}px`;
+            btn.style.top = `${newY}px`;
+            const phrases = ["Неа 😜", "Мимо! 🎯", "Косой 👀", "Попробуй еще 😂", "Как в игре 🤡", "Лол нет 😎", "Скилл убежал 🏃"];
+            btn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            increaseRage(5);
+        };
+        btn.addEventListener('mouseover', moveButton);
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+            showAchievement('Промазал по кнопке!');
+        });
+
+        // Rage Meter
+        let rage = 0;
+        function increaseRage(amount) {
+            rage = Math.min(100, rage + amount);
+            document.getElementById('rageMeter').style.width = rage + '%';
+            const texts = ['Спокойствие... 😌', 'Начинает бомбить 😤', 'БОМБИТ! 🔥', 'ЯДЕРНАЯ БОМБЕЖКА! ☢️', 'ВСЕЛЕНСКИЙ ТИЛТ! 💀'];
+            const index = Math.floor(rage / 25);
+            document.getElementById('rageText').textContent = texts[Math.min(index, texts.length - 1)];
+            if(rage >= 100) {
+                document.body.classList.add('shake-anim');
+                setTimeout(() => document.body.classList.remove('shake-anim'), 1000);
+                confetti();
+            }
+        }
+
+        // Report Button
+        function reportDima() {
+            increaseRage(15);
+            const responses = [
+                'Спасибо! Ваша жалоба отправлена в мусорку. 🗑️',
+                'Репорт принят! Дима получит... ничего. 😂',
+                'VAC занят, попробуйте позже. 🤖',
+                'Ошибка: слишком много репортов на Диму! 📊',
+                'Репорт #999999 на Диму зарегистрирован! 📝'
+            ];
+            alert(responses[Math.floor(Math.random() * responses.length)]);
+        }
+
+        // Achievement System
+        function showAchievement(text) {
+            const popup = document.getElementById('achievementPopup');
+            document.getElementById('achievementText').textContent = text;
+            popup.style.transform = 'translateX(0)';
+            setTimeout(() => popup.style.transform = 'translateX(150%)', 3000);
+        }
+        setTimeout(() => showAchievement('Посетил сайт позора'), 2000);
+
+        // Chat System
+        const chatMessages = [
+            { name: 'donk', color: 'cyan', text: 'Дима, ты вообще в монитор смотришь?' },
+            { name: 'ZywOo', color: 'blue', text: 'I played with Dima once. I quit CS for a week.' },
+            { name: 'Teammate_2', color: 'green', text: 'Дима опять купил негев на пистолетке' },
+            { name: 'SYSTEM', color: 'red', text: 'Дима застрял в текстурах. Снова.' },
+            { name: 'Enemy', color: 'orange', text: 'Thanks Dima for the free ace!' },
+            { name: 'Coach', color: 'purple', text: 'Я ухожу. Не могу больше.' },
+            { name: 'Valve', color: 'yellow', text: 'Мы рассматриваем бан Димы из всех игр.' }
+        ];
+        
+        function addChatMessage(name, text, color) {
+            const chatBox = document.getElementById('chatBox');
+            const msg = document.createElement('div');
+            msg.className = 'bg-black/40 p-2 rounded animate-pulse';
+            msg.innerHTML = `<span class="text-${color}-400 font-bold">${name}:</span><span class="text-white"> ${text}</span>`;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            setTimeout(() => msg.classList.remove('animate-pulse'), 1000);
+        }
+        
+        setInterval(() => {
+            if(Math.random() > 0.6) {
+                const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+                addChatMessage(msg.name, msg.text, msg.color);
+            }
+        }, 4000);
+
+        // Target Game
+        let hits = 0, misses = 0;
+        const targetArea = document.getElementById('targetArea');
+        const target = document.getElementById('target');
+        const hitMarker = document.getElementById('hitMarker');
+        
+        function moveTarget() {
+            const areaRect = targetArea.getBoundingClientRect();
+            const x = Math.random() * (areaRect.width - 48);
+            const y = Math.random() * (areaRect.height - 48);
+            target.style.left = x + 'px';
+            target.style.top = y + 'px';
+            target.style.transform = 'none';
+        }
+        
+        targetArea.addEventListener('click', (e) => {
+            const rect = targetArea.getBoundingClientRect();
+            hitMarker.style.left = (e.clientX - rect.left - 20) + 'px';
+            hitMarker.style.top = (e.clientY - rect.top - 20) + 'px';
+            hitMarker.classList.remove('hidden');
+            setTimeout(() => hitMarker.classList.add('hidden'), 300);
+            
+            // 95% chance to miss (like Dima)
+            if(Math.random() > 0.95) {
+                hits++;
+                document.getElementById('hitCount').textContent = hits;
+                target.textContent = '💥';
+                setTimeout(() => { target.textContent = '🎯'; moveTarget(); }, 300);
+            } else {
+                misses++;
+                document.getElementById('missCount').textContent = misses;
+                moveTarget();
+                increaseRage(2);
+            }
+        });
+        
+        setInterval(moveTarget, 2000);
+
+        // Slot Machine
+        const slotEmojis = ['🤡', '💀', '🔫', '💥', '🎮', '😭', '🗑️', '📉'];
+        const excuses = [
+            '🤡🤡🤡 - "Лаги были!"',
+            '💀💀💀 - "Мышка сломалась!"',
+            '🔫🔫🔫 - "Читеры везде!"',
+            '💥💥💥 - "Тиммейты мешали!"',
+            '🎮🎮🎮 - "Клавиатура залипла!"',
+            '😭😭😭 - "Я просто разминался!"',
+            '🗑️🗑️🗑️ - "Это не мой день!"',
+            '📉📉📉 - "Сервер лагал!"',
+            '🤡💀🔫 - "Все против меня!"',
+            '💥🎮😭 - "Я играл одной рукой!"'
+        ];
+        
+        document.getElementById('spinBtn').addEventListener('click', () => {
+            const slots = [document.getElementById('slot1'), document.getElementById('slot2'), document.getElementById('slot3')];
+            let spins = 0;
+            const maxSpins = 20;
+            
+            const spinInterval = setInterval(() => {
+                slots.forEach(slot => {
+                    slot.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
+                    slot.classList.add('rainbow-anim');
+                });
+                spins++;
+                if(spins >= maxSpins) {
+                    clearInterval(spinInterval);
+                    slots.forEach(slot => slot.classList.remove('rainbow-anim'));
+                    document.getElementById('excuseText').textContent = excuses[Math.floor(Math.random() * excuses.length)];
+                    increaseRage(10);
+                }
+            }, 100);
+        });
+
+        // Confetti Effect
+        function confetti() {
+            const emojis = ['🤡', '💀', '🎮', '💥', '😂', '🔥', '⭐', '🎯'];
+            for(let i = 0; i < 50; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'confetti';
+                conf.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                conf.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(conf);
+                setTimeout(() => conf.remove(), 5000);
+            }
+        }
+
+        // Emoji Rain Background
+        function createEmojiRain() {
+            const emojis = ['🤡', '💀', '🎮', '🔫', '💥'];
+            const container = document.getElementById('emojiRain');
+            for(let i = 0; i < 15; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji-float';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%';
+                emoji.style.animationDelay = Math.random() * 10 + 's';
+                emoji.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                container.appendChild(emoji);
+            }
+        }
+        createEmojiRain();
+
+        // Share Functions
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const notif = document.getElementById('copyNotification');
+                notif.style.opacity = '1';
+                setTimeout(() => notif.style.opacity = '0', 2000);
+                showAchievement('Ссылка скопирована!');
+            });
+        }
+        
+        function shareTwitter() {
+            const text = encodeURIComponent('Посмотрите на статистику позора Димы! 🤡💀 #DimaNoob #CS2');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+        }
+        
+        function shareTelegram() {
+            const text = encodeURIComponent('Посмотрите на статистику позора Димы! 🤡');
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${text}`, '_blank');
+        }
+
+        // Sound Toggle (fun fake sounds via Web Audio API)
+        let soundEnabled = false;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        document.getElementById('soundToggle').addEventListener('click', function() {
+            soundEnabled = !soundEnabled;
+            this.textContent = soundEnabled ? '🔇 Выключить звук' : '🔊 Включить звук позора';
+            if(soundEnabled) {
+                playSound(200, 0.1);
+                showAchievement('Звук позора включен!');
+            }
+        });
+        
+        function playSound(freq, duration) {
+            if(!soundEnabled) return;
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.frequency.value = freq;
+            oscillator.type = 'square';
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + duration);
+        }
+
+        // Play sounds on various actions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => playSound(300 + Math.random() * 200, 0.1));
+        });
+
+        // Easter Egg: Konami Code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+            if(konamiCode.join(',') === konamiSequence.join(',')) {
+                document.body.classList.add('rainbow-anim');
+                confetti();
+                showAchievement('🎮 KONAMI CODE ACTIVATED!');
+                setTimeout(() => document.body.classList.remove('rainbow-anim'), 5000);
+            }
+        });
+
+        console.log('%c🤡 DIMA_SKILL_NOT_FOUND_EXCEPTION 🤡', 'color: red; font-size: 24px; font-weight: bold;');
+        console.log('%cЕсли ты это читаешь - ты уже лучше Димы в CS!', 'color: yellow; font-size: 14px;');
+    </script>
+</body>
+</html>
